@@ -39,7 +39,7 @@ const LoginPage = () => {
     console.log("이건 뭔데?",isActive);
   },
   //email하고 pw에 변화가 일어났을때만 실행 
-  [isEmail, isPassword]);
+  [isEmail, isPassword,isActive]);
 
   //제출 함수 -> 버튼이 마우스클릭 되었을때 서버로 데이터 보내기
   const onSubmit = async (e: React.MouseEvent) => {

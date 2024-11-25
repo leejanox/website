@@ -7,8 +7,8 @@ const app = express();
 const port = 5000;
 const path = require('path');
 const jwt = require('jsonwebtoken');  // token 용
-const bcrypt =require('bcrypt');//비밀번호 해시
-require('dotenv').config();//환경변수 로드 
+//const bcrypt =require('bcrypt');//비밀번호 해시
+//require('dotenv').config();//환경변수 로드 
 
 // CORS 허용
 app.use(cors());
@@ -50,7 +50,7 @@ app.post('/api/login', async (req, res) => {
     }
   
     // 데이터베이스에서 사용자 정보 가져오기
-    db.query('SELECT * FROM user WHERE email = ? AND password = ?',[email,], async (err, results) =>{
+    db.query('SELECT * FROM user WHERE email = ? AND password = ?',[email,password], async (err, results) =>{
         if (err) {
           console.error('데이터베이스 사용자 조회 중 오류 발생:', err);
           return res.status(500).json({ message: '데이터 베이스 조회 오류가 발생했습니다.' });
@@ -65,10 +65,10 @@ app.post('/api/login', async (req, res) => {
         const user = results[0];
         
         //비밀번호 검증
-        const isPasswordValid = await bcrypt.compare(password,user.password);
-        if(!isPasswordValid){
-          return res.status(401).send("비밀번호 검증 실패");
-        }
+        //const isPasswordValid = await bcrypt.compare(password,user.password);
+        //if(!isPasswordValid){
+        //  return res.status(401).send("비밀번호 검증 실패");
+        //}
 
         const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
           expiresIn: '1h', // 토큰 유효 시간 (1시간)
