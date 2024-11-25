@@ -1,0 +1,23 @@
+{
+    "extends": "../tsconfig.base.json",
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es6",             // 백엔드에서는 es6 이상의 target을 주로 사용
+      "outDir": "../dist",         // 컴파일된 파일이 저장될 폴더
+      "strict": true,              // 엄격한 타입 검사 활성화
+      "rootDir": "src",            // 프로젝트의 루트 디렉토리 (src로 설정) ->컴파일된 파일들은 outdir (dist폴더)로 출력
+      "typeRoots": ["./node_modules/@types"], // 모듈의 타입 정의 위치 설정
+      "skipLibCheck": true,        // 라이브러리 체크 건너뜀으로써 컴파일 속도 개선
+      "esModuleInterop": true,     // CommonJS와 ES 모듈 간의 호환성 설정
+      "resolveJsonModule": true    // JSON 파일 import 가능
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.test.ts"] // node_modules 및 테스트 파일 제외
+  }
+  
+  /*
+클라이언트: 브라우저 호환성을 고려해 "es5"로 설정
+서버: Node.js의 최신 기능 사용을 위해 "es6" 이상으로 설정
+
+=> 프론트엔드와 백엔드가 문제 없이 독립적으로 컴파일및 실행 된다
+*/
