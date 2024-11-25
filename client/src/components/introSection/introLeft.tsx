@@ -1,10 +1,12 @@
 import Footer from "components/footer";
 import logo from "images/average23logo.png";
 import { Link } from "react-router-dom";
+import StarsBackground from "components/starbackground";
 
 const IntroLeft  =()=>{
     return(
-        <div className="relative overflow-clip felx flex-shrink-0 bg-introBG w-full h-full text-slate-200">
+        <div className="relative overflow-clip felx flex-shrink-0 w-full h-full text-slate-200">
+            <StarsBackground />
             <div className="absolute -rotate-[29deg] top-14 -left-24">
                 <span className="font-extrabold text-7xl text-nowrap">
                     average23 average23

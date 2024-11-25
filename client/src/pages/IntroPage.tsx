@@ -1,10 +1,11 @@
 import IntroLeft from "components/introSection/introLeft";
 //import IntroRight from "components/introSection/introRight";
 
+
 const IntroPage:React.FC = ()=>{
 
     return(
-        <div className="flex flex-row w-full h-screen">
+        <div className="flex flex-row w-full h-screen bg-introBG">
             <IntroLeft/>
         </div>
     );

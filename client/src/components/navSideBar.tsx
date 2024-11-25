@@ -34,6 +34,15 @@ const NavSideBar:React.FC<NavSideBarProps>=({activeSection,setActiveSection})=>{
             <Link to="/" className="absolute top-16 left-2">
                 <img alt="average23logo" src={logo} />
             </Link>
+            <div className="absolute bottom-14 right-4 text-sm">
+                <Link to="/login">
+                    Login
+                </Link>
+                <span>&nbsp;|&nbsp;</span>
+                <Link to="/signup">
+                    SignUp
+                </Link>
+            </div>
             <ul className="absolute top-48 left-12 flex flex-col justify-start gap-6">
                 {section.map((section)=>(
                     <li key={section} className="hover:text-slate-200 focus:text-slate-200">

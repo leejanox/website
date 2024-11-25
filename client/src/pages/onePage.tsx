@@ -33,7 +33,7 @@ const OnePage=()=>{
     return(
         <div className="flex flex-row w-full h-screen relative">
             <NavSideBar activeSection={activeSection} setActiveSection={setActiveSection}/>           
-            <div className="absolute right-0 w-5/6 max-h-screen">
+            <div className="absolute right-0 w-5/6 max-h-screen bg-WhiteBG">
                 <HeroSection activeSection={activeSection} />
             </div>
         </div>
