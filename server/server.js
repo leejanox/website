@@ -7,6 +7,7 @@ const app = express();
 const port = 5000;
 const path = require('path');
 const jwt = require('jsonwebtoken');  // token 용
+const { error } = require('console');
 //const bcrypt =require('bcrypt');//비밀번호 해시
 //require('dotenv').config();//환경변수 로드 
 
@@ -127,9 +128,42 @@ app.post('/api/login', async (req, res) => {
   }
   });
 
+  //파일 다운로드_1
+  app.get('/api/fetchfilelist', async (req, res) => {
 
-  //파일 다운로드
+    const {id,sectiontype,filename,download_url,info} =req.body;
+    const query= "SELECT * FROM files";
 
+    db.query(query,(error,result)=>{
+      if(error){
+        console.error("files테이블 조회 오류: ",error);
+        res.status(500).send("조회 sql쿼리 실행 실패");
+        return;
+      }
+      console.log(result);
+      res.status(201).json(result);
+    });
+  });
+
+  //파일 다운로드 드롭다운 버튼에 들어갈 옵션
+
+  app.get('/api/fetchOptions',async(req,res)=>{
+    const {sectiontype} =req.body;
+    const query="SELECT DISTINCT sectiontype FROM files;"
+
+    db.query(query,(error,result)=>{
+      if(error){
+        console.error("files Table sectiontype 조회 오류 : ",error);
+        res.status(500).send("옵션 조회 쿼리 실패");
+        return;
+      }
+      console.log(result);
+      res.status(201).json(result);
+    })
+  })
+
+  /*파일 다운로드_2
+  
   app.get('/api/downloadfile', (req, res) => {
     const ids = req.query.id ? req.query.id.split('&').map(id => id.split('=')[1]) : []; // id 쿼리 파라미터가 여러 개일 때 처리
   
@@ -163,6 +197,8 @@ app.post('/api/login', async (req, res) => {
       res.json(files); // 여러 파일을 배열 형태로 반환
     });
   });
+*/
+
 
 // 서버 실행
 app.listen(port, () => {

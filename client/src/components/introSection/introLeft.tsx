@@ -18,7 +18,7 @@ const IntroLeft  =()=>{
                 </span>
             </div>
             <Link to="/one">
-                <button className="absolute top-1/3 right-32 border bg-inherit rounded-3xl px-8 py-1.5">
+                <button className="absolute top-1/3 right-32 border bg-inherit rounded-3xl px-8 z-[2] py-1.5">
                     <span className="text-5xl font-sejong font-bold">Get Start</span>
                 </button>
             </Link>

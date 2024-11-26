@@ -63,6 +63,7 @@ const AuthProvider:React.FC<{children:React.ReactNode}>=({children})=>{
     //이렇게 쓰면 false,null,undefined,0,nan,"" 을 다 false로 바꿔주고 그 외는 다 true로 해준대...
     const isloggined = !!token;
     console.log("로그인 상태: ",isloggined);
+    
 
     useEffect(() => {
 

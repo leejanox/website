@@ -6,7 +6,7 @@ import { useAuth } from "context/authContext";
 import { useNavigate } from "react-router-dom"; // useNavigate 추가
 import AImodePage from "pages/aimodelPage";
 import {motion} from "framer-motion";
-import DWPage from "pages/dwpage";
+import DownloadPage2 from "pages/downloadPage2";
 
 //herosectionProps의 activesection 은 type.d.ts에서 가져온 SectionID 타입임
 type HeroSectionProps = {
@@ -16,10 +16,11 @@ type HeroSectionProps = {
 //HereSection은 react.fc 에서 정의한 herosectionprops의 activesection을 parameter로 가져다 쓴다는 소리
 const HeroSection: React.FC<HeroSectionProps> = ({ activeSection }) => {
     //isloggined 를 authContext에서 useAuth를 가져와 사용해 이미 발급된 token을 재사용해 로그인 상태 판단
-    const { isloggined } = useAuth();
+    const { isloggined ,token} = useAuth();
     //여기서 참이 찍혀 그러니까 download 페이지가 나옴 
     console.log("HreoSection isloggiend 상태: ",isloggined);
-    const navigate = useNavigate(); // navigate 훅 사용
+    //console.log("발급된 token: ",token);
+    const navigate = useNavigate(); // navigate 사용
 
 
     //얘는 다운로드 페이지 로그인 안한 사람이 눌럿을때 navigate 해줄 용도
@@ -46,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ activeSection }) => {
             //얘도 패딩 넣지마셈
             <div className="">
                 {isloggined ? (
-                    <DWPage/>
+                    <DownloadPage2/>
                 ) : (
                     <div>로그인 필요</div> // 로그인되지 않으면 메시지 출력 -> 근데 useEffect 해놔서.. 어떻게 더 줄일 방법이 있나..?
                 )}

@@ -4,8 +4,9 @@ import IntroPage from "pages/IntroPage";
 import OnePage from "pages/onePage";
 import SignUpPage from "pages/signupPage";
 import LoginPage from "pages/loginPage";
-import DownloadPage from "pages/downloadPage";
-import DWPage from "pages/dwpage";
+//import DownloadPage from "pages/downloadPage";
+// DWPage from "pages/dwpage";
+import DownloadPage2 from "pages/downloadPage2";
 
 
 const Router=()=>{
@@ -15,7 +16,7 @@ const Router=()=>{
             <Route path="/one" element={<OnePage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/signup" element={<SignUpPage/>}/>
-            <Route path="/down" element={<DWPage/>}/>
+            <Route path="/down" element={<DownloadPage2/>}/>
         </Routes>
     );
 }
@@ -23,19 +24,6 @@ const Router=()=>{
 export default Router;
 
 
-/*
-const sections: SectionID[]=["Home","Login","SignUp","Description","Client","Server","AImodel","mySQL","Download","Favorite"];
 
-const Router:React.FC=()=>{
-    return(
-        <Routes>
-            <Route path="/" element={<MainPage/>}/>
-            {sections.map((section)=>(
-                <Route key={section} path={`/${section.toLowerCase()}`} element={<MainPage/>}/>
-            ))}
-        </Routes>
-    );
-}
+//const sections: SectionID[]=["Home","Login","SignUp","Description","Client","Server","AImodel","mySQL","Download","Favorite"];
 
-export default Router;
- */

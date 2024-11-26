@@ -1,7 +1,7 @@
 import SubmitButton from "components/form/submitButton";
 import Input from "components/form/input";
 import { useEffect,useState } from "react";
-import Modal from "components/modal";
+import Modal from "components/form/modal";
 import axios from "axios";
 import Footer from "components/footer";
 
