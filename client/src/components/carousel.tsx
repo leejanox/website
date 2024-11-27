@@ -1,5 +1,5 @@
-import { useEffect, useState,} from "react";
-import {motion, wrap } from "framer-motion";
+import { useState,} from "react";
+import {motion} from "framer-motion";
 import { SectionID } from "./types";
 
 
@@ -11,9 +11,13 @@ import img_2 from "images/carouselimage/image2.jpg";
 import img_3 from "images/carouselimage/image3.jpg";
 import img_4 from "images/carouselimage/image4.jpg";
 import img_5 from "images/carouselimage/image5.jpg";
+import img_6 from "images/carouselimage/image6.jpg";
+import img_7 from "images/carouselimage/image7.jpg";
+
+import arrow from "images/arrow.png";
 
 const images:Record<SectionID,string[]>={
-    Description:[img_1,img_2,img_3,img_4,img_5],
+    Description:[img_1,img_2,img_3,img_4,img_5,img_6,img_7],
     Client:[img_2,img_2,img_3,img_4,img_5],
     Server:[img_3,img_1,img_3,img_4,img_5],
     AImodel:[],
@@ -78,7 +82,7 @@ const Carousel:React.FC<{section:SectionID}>=({section})=>{
     return(
         <div className=" w-full h-1/2 flex">
             <div className="overflow-clip relative">
-                <motion.div key={curr} id="Slider" className="px-36"
+                <motion.div key={curr} id="Slider" className="px-10 pt-6"
                     initial={{opacity:0,x:50}} 
                     whileInView={{opacity:1,x:0}} 
                     viewport={{once:false}} 
@@ -90,8 +94,12 @@ const Carousel:React.FC<{section:SectionID}>=({section})=>{
                 >
                     <img alt={`${section}_img_${curr+1}`} src={images[section][curr]}/>
                 </motion.div>
-                <button onClick={Prev} className="text-gray-400 text-6xl absolute bottom-2 left-4">{`<`}</button>
-                <button onClick={Next} className="text-gray-400 text-6xl absolute bottom-2 right-4">{`>`}</button>
+                <button onClick={Prev} className="absolute bottom-1 left-4 w-16 transform scale-x-[-1]">
+                    <img alt="arrow" src={arrow}/>
+                </button>
+                <button onClick={Next} className="absolute bottom-1 right-4 w-16">
+                    <img alt="arrow" src={arrow}/>
+                </button>
             </div>
         </div>
     );

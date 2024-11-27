@@ -19,6 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ activeSection }) => {
     const { isloggined ,token} = useAuth();
     //여기서 참이 찍혀 그러니까 download 페이지가 나옴 
     console.log("HreoSection isloggiend 상태: ",isloggined);
+    //console.log("token: ",token);
     //console.log("발급된 token: ",token);
     const navigate = useNavigate(); // navigate 사용
 
@@ -59,7 +60,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ activeSection }) => {
     //이거 onePage에     const [activeSection,setActiveSection] =useState<SectionID>("Description"); 이렇게 해놔서 기본 description상태임
     //description,client,server 는 carousel 나와야 함
     return (
-        <motion.div className="p-4"
+        <motion.div className=""
             initial={{opacity:0,y:50}}
             whileInView={{opacity:1 ,y:0}}
             viewport={{once:false}}
@@ -69,7 +70,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ activeSection }) => {
                 y:{duration:0.5}
             }}
         >
-            <Carousel section={activeSection} />
+            <Carousel section={activeSection}/>
         </motion.div>
     );
 };

@@ -15,13 +15,14 @@ interface OptionType{
     sectiontype:string;
 }
 
+
 const DownloadPage2=()=>{
 
     //불러올 fileList
     const [files,setFiles]=useState<FileListType[]>([]);
     //불러올 폴더명 = 옵션으로 쓸 거
     const [options,setOptions]=useState<string[]>([]);
-
+    const [selectOption,setSelectOption]=useState<string>("ALL");
     //fileList요청
     useEffect(()=>{
         const fetchFiles = async()=>{
@@ -49,16 +50,30 @@ const DownloadPage2=()=>{
         }
         fetchFiles();
         fetchOptions();
-    },[]);
+    },[]);// eslint-disable-line react-hooks/exhaustive-deps
+
+    const handleSelectOption=(selectOption:string)=>{
+        setSelectOption(selectOption);
+        console.log("선택된 옵션: ",selectOption);
+    }
+
+/*    useEffect(() => {
+        console.log("현재 선택된 옵션: ", selectOption);
+      }, [selectOption]);
+*/    
+
+    //선택된 옵션에 따라 파일 정렬
+    const filteredFiles = selectOption === "ALL"? files: files.filter((files)=>files.sectiontype === selectOption);
 
     return (
-        <div className="min-h-screen max-h-screen overflow-auto bg-whiteBG text-black p-6">
+        <div className="min-h-screen max-h-screen bg-whiteBG overflow-y-scroll text-black p-6">
             <h1 className="text-3xl mb-4 text-center font-extrabold ">DownLoad</h1>
-            <table className="table-auto w-full bg-gray-800 text-center rounded-lg overflow-hidden">
+            <div className="table-container">
+            <table className="table-auto w-full bg-gray-800 text-center rounded-lg">
                 <thead className="bg-introBG text-white">
                     <tr>
                         <th className="w-1/12 px-3 py-2 border-r-2 overflow-visible">
-                            <DropDown options={options}></DropDown>
+                            <DropDown options={options} SelectOption={setSelectOption}></DropDown>
                         </th>
                         <th className="w-2/12 px-4 py-2 border-r-2">File_name</th>
                         <th className="w-5/12 px-4 py-2 border-r-2">File_Info</th>
@@ -67,7 +82,7 @@ const DownloadPage2=()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {files.map((files) => (
+                    {filteredFiles.map((files) => (
                         <tr key={files.id} className="border-t bg-white text-md font-bold">
                             <td className="px-4 py-2 border-r-2">🗂️&nbsp;&nbsp;&nbsp;{files.sectiontype.toUpperCase()}</td>
                             <td className="px-4 py-2 border-r-2">💾&nbsp;&nbsp;&nbsp;{files.filename}</td>
@@ -88,6 +103,7 @@ const DownloadPage2=()=>{
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 }

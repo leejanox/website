@@ -2,6 +2,7 @@ import axios from "axios";
 import Footer from "components/footer";
 import Input from "components/form/input";
 import SubmitButton from "components/form/submitButton";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/authContext";
 
@@ -117,8 +118,9 @@ const LoginPage = () => {
         {errorMessage && (
           <div className="text-red-500 text-sm mt-2 text-center">{errorMessage}</div>
         )}
-        <div className="absolute -bottom-5 left-20 w-2/3">
+        <div className="absolute -bottom-11 left-20 w-2/3">
           <SubmitButton onClick={onSubmit} disabled={!isActive} text="Login" />
+          <Link to='/signup' className="text-xs pl-24 hover:underline">Not a member yet?</Link>
         </div>
       </div>
       <Footer />

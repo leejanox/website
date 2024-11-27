@@ -26,7 +26,7 @@ const OnePage=()=>{
         //이거는 위에 activesection을 SectionID 타입이라고 적어놧으니까
         //어떤 섹션인지 section이름이 떠야함
         console.log("section활성화 상태:",activeSection);
-    }
+    };// eslint-disable-line react-hooks/exhaustive-deps
 
     //처음 onepage 들어가서 herosection 마운트 되면 default로 정해둔 Description content 제공 
     //setActiveSection 변할 때마다 NavSideBar랑 HeroSection에 전달해서 컴포넌트 바뀌게

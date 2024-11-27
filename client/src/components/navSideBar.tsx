@@ -45,7 +45,7 @@ const NavSideBar:React.FC<NavSideBarProps>=({activeSection,setActiveSection})=>{
             </div>
             <ul className="absolute top-48 left-12 flex flex-col justify-start gap-6">
                 {section.map((section)=>(
-                    <li key={section} className="hover:text-slate-200 focus:text-slate-200">
+                    <li key={section} className="hover:text-slate-200 focus:text-gray-600">
                         <button className="text-2xl font-bold" onClick={()=>setActiveSection(section)}>{`${section}`}</button>
                     </li>
                 ))}

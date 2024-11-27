@@ -1,22 +1,27 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 // Props Type 정의
 interface DropDownProps {
   options: string[]; // 드롭다운 선택창에 들어갈 옵션 배열
+  SelectOption:(isSelectedOption:string)=>void; 
 }
 
-const DropDown = ({ options }: DropDownProps) => {
+const DropDown = ({ options ,SelectOption}: DropDownProps) => {
   console.log("옵션으로 뭐 들어왔을까? : ", options);
 
   const [isOpen, setIsOpen] = useState<boolean>(false); // 드롭다운 메뉴가 열렸는지 아닌지
   const [isSelectedOption, setIsSelectedOption] = useState<string>("ALL"); // 선택된 옵션 글자 비교할 거니까 string
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleDropDown=()=>setIsOpen((prev=>!prev));
-  const SelectOption = (option: string) => {
-    setIsSelectedOption(option); // 선택된 옵션 이름 업데이트
+
+  const handleSelectOption = (option: string) => {
+    setIsSelectedOption(option);
+    SelectOption(option);
     console.log("사용자가 누른 옵션: ", option);
-    console.log("isSelectedOption: ", isSelectedOption);
+    console.log("드롭다운 내부 상태 업데이트 전 선택된 옵션: ",isSelectedOption);
     setIsOpen(false); // 옵션 선택 시 드롭다운 닫기
   };
 
@@ -57,11 +62,12 @@ const DropDown = ({ options }: DropDownProps) => {
             transition={{ duration: 0.2 }} // 애니메이션 시간
             className="absolute -left-1.5 z-10 mt-2 w-24 bg-white border rounded-md shadow-lg"
           >
-            <li className="px-4 py-2 border-b-2 hover:underline text-black" onClick={()=>SelectOption("ALL")}>ALL</li>
+            <li className="px-4 py-2 border-b-2 hover:underline text-black" onClick={()=>handleSelectOption("ALL")}>ALL</li>
             {options.map((option, index) => (
               <li
                 key={index}
-                onClick={() => SelectOption(option)} // 옵션 클릭 시 선택
+                onClick={() => handleSelectOption(option)
+                } // 옵션 클릭 시 선택
                 className="px-4 py-2 border-b-2 hover:underline text-black"
               >
                 {option.toUpperCase()}
