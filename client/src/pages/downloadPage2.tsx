@@ -23,6 +23,7 @@ const DownloadPage2=()=>{
     //불러올 폴더명 = 옵션으로 쓸 거
     const [options,setOptions]=useState<string[]>([]);
     const [selectOption,setSelectOption]=useState<string>("ALL");
+    const [searchText,setSearchText]=useState<string>("");
     //fileList요청
     useEffect(()=>{
         const fetchFiles = async()=>{

@@ -21,7 +21,7 @@ const images:Record<SectionID,string[]>={
     Client:[img_2,img_2,img_3,img_4,img_5],
     Server:[img_3,img_1,img_3,img_4,img_5],
     AImodel:[],
-    Cooperation:[img_4,img_2,img_3,img_4,img_5],
+    Plan:[img_4,img_2,img_3,img_4,img_5],
     Download:[],
 };/**/
 

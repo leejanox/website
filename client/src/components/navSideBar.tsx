@@ -27,7 +27,7 @@ const NavSideBar:React.FC<NavSideBarProps>=({activeSection,setActiveSection})=>{
         }
     }
 
-    const section:SectionID[]=["Description","Client","Server","AImodel","Cooperation","Download",];
+    const section:SectionID[]=["Description","Client","Server","AImodel","Plan","Download",];
     console.log("현재활성화된 section: ",activeSection);
     return(
         <div className="relative overflow-clip felx flex-shrink-0 bg-blackBG w-1/6 h-full text-white">

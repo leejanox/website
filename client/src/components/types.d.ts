@@ -1,1 +1,1 @@
-export type SectionID = "Description"|"Client"|"Server"|"AImodel"|"Cooperation"|"Download"
+export type SectionID = "Description"|"Client"|"Server"|"AImodel"|"Plan"|"Download"
